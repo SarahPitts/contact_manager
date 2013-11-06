@@ -10,6 +10,10 @@ require 'spec_helper'
 #     end
 #   end
 # end
+
 describe PhoneNumbersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'adds a new phone number' do
+    pending
+    # ...
+  end
 end

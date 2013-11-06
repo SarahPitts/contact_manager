@@ -53,6 +53,10 @@ describe PhoneNumbersController do
       get :new, {}, valid_session
       assigns(:phone_number).should be_a_new(PhoneNumber)
     end
+
+    it 'has a link to add a new phone number' do
+      expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+    end
   end
 
   describe "GET edit" do
@@ -80,7 +84,6 @@ describe PhoneNumbersController do
       it "redirects to the created phone_number" do
         post :create, {:phone_number => valid_attributes}, valid_session
         expect(response).to redirect_to(alice)
-
       end
     end
 

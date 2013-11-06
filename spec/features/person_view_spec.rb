@@ -23,8 +23,7 @@ describe 'the person view', type: :feature do
   end
 
   it 'adds a new phone number' do
-    pending
-    # 
+    #
   end
 
 
