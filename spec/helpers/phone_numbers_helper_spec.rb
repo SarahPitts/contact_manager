@@ -13,7 +13,6 @@ require 'spec_helper'
 
 describe PhoneNumbersHelper do
   it 'adds a new phone number' do
-    pending
-    # ...
+
   end
 end
