@@ -49,5 +49,21 @@ describe 'the person view', type: :feature do
       expect(page).to have_link('delete')
     end
   end
+end
 
+describe "email addresses" do
+
+let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
+
+    before(:each) do
+      person.email_addresses.create(address: "add3@example.com")
+      person.email_addresses.create(address: "add4@example.com")
+      visit person_path(person)
+    end
+
+    it 'has list items for each email address' do
+      person.email_addresses.each do |email_address|
+        expect(page).to have_selector('li', text: email_address.address)
+    end
+  end
 end
