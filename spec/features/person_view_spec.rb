@@ -64,6 +64,12 @@ let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
     it 'has list items for each email address' do
       person.email_addresses.each do |email_address|
         expect(page).to have_selector('li', text: email_address.address)
+      end
+    end
+
+    it 'has has an add email address link' do
+      person.email_addresses.each do |email_address|
+        expect(page).to have_link('new_email_address', href: new_email_address_path(contact_id: person.id))
     end
   end
 end
