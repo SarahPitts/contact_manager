@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe EmailAddress do
   let(:email_address) {EmailAddress.new(address: "john@example.com", person_id: 1)}
+  let(:person) { Person.new(first_name: 'John', last_name: 'Doe') }
 
   it 'is valid' do
     expect(email_address).to be_valid

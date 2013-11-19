@@ -70,6 +70,14 @@ let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
     it 'has has an add email address link' do
       person.email_addresses.each do |email_address|
         expect(page).to have_link('Add email address', href: new_email_address_path(person_id: person.id))
+      end
     end
-  end
+
+    it 'adds a new email_address' do
+      page.click_link("Add email address")
+      page.fill_in('Address', with: "addedemail@example.com")
+      page.click_button("Create Email address")
+      expect(current_path).to eq(person_path(person))
+      expect(page).to have_content('addedemail@example.com')
+    end
 end
