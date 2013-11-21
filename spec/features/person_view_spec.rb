@@ -86,8 +86,8 @@ let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
       email = person.email_addresses.first
       old_email_address = email.address
       
-      page.click_link("Edit")
-      page.fill_in('address', with: 'new@example.com')
+      first(:link, 'edit').click
+      page.fill_in('Address', with: 'new@example.com')
       page.click_button("Update Email address")
       expect(current_path).to eq(person_path(person))
       expect(page).to have_content('new@example.com')

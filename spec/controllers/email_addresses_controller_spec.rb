@@ -122,9 +122,13 @@ describe EmailAddressesController do
       end
 
       it "redirects to the email_address" do
+        bob = Person.create(first_name: 'Bob', last_name: 'Jones')
+        valid_attributes = {address: 'bob@example.com', person_id: bob.id}
+
+
         email_address = EmailAddress.create! valid_attributes
         put :update, {:id => email_address.to_param, :email_address => valid_attributes}, valid_session
-        response.should redirect_to(email_address)
+        response.should redirect_to(bob)
       end
     end
 
