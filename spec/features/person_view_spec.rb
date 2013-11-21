@@ -93,4 +93,10 @@ let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
       expect(page).to have_content('new@example.com')
       expect(page).to_not have_content(old_email_address)
     end
+
+    it 'has links to delete email addresses' do
+      person.email_addresses.each do |email|
+        expect(page).to have_link('delete', href: email_address_path(email))
+      end
+    end
 end
