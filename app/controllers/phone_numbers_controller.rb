@@ -24,7 +24,7 @@ class PhoneNumbersController < ApplicationController
   # GET /phone_numbers/new
   # GET /phone_numbers/new.json
   def new
-    @phone_number = PhoneNumber.new(person_id: params[:person_id])
+    @phone_number = PhoneNumber.new(contact_id: params[:contact_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +43,7 @@ class PhoneNumbersController < ApplicationController
     @phone_number = PhoneNumber.new(params[:phone_number])
 
     if @phone_number.save
-      redirect_to @phone_number.person, :notice => "Successfully created phone number."
+      redirect_to @phone_number.contact, :notice => "Successfully created phone number."
     else
       render :action => 'new'
     end
@@ -56,7 +56,7 @@ class PhoneNumbersController < ApplicationController
 
     respond_to do |format|
       if @phone_number.update_attributes(params[:phone_number])
-        format.html { redirect_to @phone_number.person, notice: 'Phone number was successfully updated.' }
+        format.html { redirect_to @phone_number.contact, notice: 'Phone number was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,7 +72,7 @@ class PhoneNumbersController < ApplicationController
     @phone_number.destroy
 
     respond_to do |format|
-      format.html { redirect_to @phone_number.person }
+      format.html { redirect_to @phone_number.contact }
       format.json { head :no_content }
     end
   end
