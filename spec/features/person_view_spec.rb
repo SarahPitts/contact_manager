@@ -19,7 +19,7 @@ describe 'the person view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+    expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: person.id))
   end
 
   it 'adds a new phone number' do
@@ -85,7 +85,7 @@ let(:person) { Person.create(first_name: 'Jane', last_name: 'Doe') }
     it 'edits an email address' do
       email = person.email_addresses.first
       old_email_address = email.address
-      
+
       first(:link, 'edit').click
       page.fill_in('Address', with: 'new@example.com')
       page.click_button("Update Email address")
