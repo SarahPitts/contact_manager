@@ -162,7 +162,7 @@ describe PhoneNumbersController do
     it "redirects to the phone_number person" do
       phone_number = PhoneNumber.create! valid_attributes
       delete :destroy, {:id => phone_number.to_param}, valid_session
-      response.should redirect_to(phone_number.person)
+      response.should redirect_to(phone_number.contact)
     end
   end
 
