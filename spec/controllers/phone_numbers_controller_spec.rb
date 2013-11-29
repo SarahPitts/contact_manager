@@ -104,7 +104,7 @@ describe PhoneNumbersController do
     describe "with valid params" do
 
       let(:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
-      let(:valid_attributes) { {number: '555-5678', "contact_id" => 1, "contact_type" => "Person"} }
+      let(:valid_attributes) { {number: '555-5678', "contact_id" => bob.id, "contact_type" => "Person"} }
 
 
       it "updates the requested phone_number" do
