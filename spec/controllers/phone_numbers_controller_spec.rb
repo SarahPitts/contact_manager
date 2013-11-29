@@ -24,7 +24,7 @@ describe PhoneNumbersController do
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
   let(:alice)  { Person.create(first_name: 'Alice', last_name: 'Smith') }
-  let(:valid_attributes) {   { "number" => "MyString", "contact_id" => 1, "contact_type" => "Person" }
+  let(:valid_attributes) {   { "number" => "MyString", "contact_id" => alice.id, "contact_type" => "Person" }
  }
 
   # This should return the minimal set of values that should be in the session
