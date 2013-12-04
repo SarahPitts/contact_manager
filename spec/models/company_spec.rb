@@ -25,4 +25,9 @@ describe Company do
 	it 'has an array of emails' do
 	expect(company.email_addresses).to eq([])
 	end
+
+	it "responds with its email addresses after they're created" do
+	email_addresses = company.email_addresses.build(address: "google@gmail.com")
+	expect(email_addresses.address).to eq('google@gmail.com')
+	end
 end
