@@ -24,7 +24,7 @@ describe EmailAddressesController do
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
   let(:alice)  { Person.create(first_name: 'Alice', last_name: 'Smith') }
-  let(:valid_attributes) {   { "person_id" => alice.id, 'address' => '1234 happy street' } }
+  let(:valid_attributes) {   { "contact_id" => alice.id, "contact_type" => "Person", 'address' => '1234 happy street' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -78,7 +78,7 @@ describe EmailAddressesController do
 
       it "redirects to the created email_address" do
         bob = Person.create(first_name: 'Bob', last_name: 'Jones')
-        valid_attributes = {address: 'bob@example.com', person_id: bob.id}
+        valid_attributes = {address: 'bob@example.com', contact_id: bob.id, "contact_type" => "Person"}
         email_address = EmailAddress.create! valid_attributes
 
         post :create, {:id => email_address.to_param,:email_address => valid_attributes}, valid_session
@@ -123,10 +123,9 @@ describe EmailAddressesController do
 
       it "redirects to the email_address" do
         bob = Person.create(first_name: 'Bob', last_name: 'Jones')
-        valid_attributes = {address: 'bob@example.com', person_id: bob.id}
-
-
+        valid_attributes = {address: 'bob@example.com', contact_id: bob.id, "contact_type" => "Person"}
         email_address = EmailAddress.create! valid_attributes
+
         put :update, {:id => email_address.to_param, :email_address => valid_attributes}, valid_session
         response.should redirect_to(bob)
       end
